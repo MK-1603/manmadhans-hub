@@ -10,7 +10,7 @@ import { query } from './lib/db.js';
 import passport from './config/passport.js';
 
 const app: Application = express();
-
+app.set('trust proxy', 1);
 // --- CORS Configuration ---
 const originEnv = process.env.CORS_ORIGIN || '*';
 const allowedOrigins = originEnv === '*'
