@@ -1145,23 +1145,25 @@ function DashboardContent() {
                 <AnimatePresence>
                   {isProfileOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                      initial={{ opacity: 0, y: 8, scale: 0.97 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.98 }}
-                      transition={{ duration: 0.15, ease: 'easeOut' }}
-                      className="fixed right-4 left-auto top-20 sm:absolute sm:right-0 sm:top-[calc(100%+0.5rem)] sm:w-[15rem]
-                        bg-[var(--card-bg)]/95 backdrop-blur-3xl rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-[var(--border2)] z-[2000] overflow-hidden"
+                      exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                      transition={{ duration: 0.13, ease: 'easeOut' }}
+                      className="fixed right-4 left-auto top-20 sm:absolute sm:right-0 sm:top-[calc(100%+0.5rem)] sm:w-[14rem]
+                        bg-[var(--card-bg)] backdrop-blur-3xl rounded-2xl shadow-[0_16px_50px_rgba(0,0,0,0.75)] border border-[var(--border2)] z-[2000] overflow-hidden"
                     >
-                      <div className="px-5 pt-5 pb-4">
-                        <span className="block text-[16px] font-black text-[var(--text)] tracking-tight truncate">{displayUsername}</span>
-                        <span className="inline-flex items-center gap-1 mt-1.5 px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-widest bg-[var(--neon)]/10 text-[var(--neon)] border border-[var(--neon)]/20">
+                      {/* User info header */}
+                      <div className="px-4 pt-4 pb-3">
+                        <span className="block text-[15px] font-black text-[var(--text)] tracking-tight truncate">{displayUsername}</span>
+                        <span className="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-md text-[8px] font-black uppercase tracking-[0.15em] bg-[var(--neon)]/10 text-[var(--neon)] border border-[var(--neon)]/20">
                           {currentRole === 'owner' ? 'Owner' : 'Member'}
                         </span>
                       </div>
 
-                      <div className="h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent w-full" />
+                      <div className="h-px bg-[var(--border)] w-full" />
 
-                      <div className="p-3 space-y-2">
+                      {/* Nav items — square box style */}
+                      <div className="p-2.5 space-y-1.5">
                         {[
                           { id: 'profile', icon: User, label: 'Profile' },
                           { id: 'account-center', icon: ShieldCheck, label: 'Security' },
@@ -1170,22 +1172,27 @@ function DashboardContent() {
                           <button
                             key={item.id}
                             onClick={() => { handleTabChange(item.id); setIsProfileOpen(false); }}
-                            className="w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl border border-[var(--border)]/50 hover:border-[var(--neon)]/40 bg-[var(--bg)]/30 hover:bg-[var(--bg)] text-[13px] font-bold text-[var(--muted)] hover:text-[var(--text)] transition-all cursor-pointer text-left group shadow-sm hover:shadow-[0_0_15px_rgba(16,185,129,0.05)]"
+                            className="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg)] hover:bg-[var(--bg)] hover:border-[var(--neon)]/30 text-[13px] font-semibold text-[var(--muted)] hover:text-[var(--text)] transition-all cursor-pointer text-left group"
                           >
-                            <item.icon className="w-4 h-4 text-[var(--muted2)] group-hover:text-[var(--neon)] transition-colors" />
+                            <div className="w-8 h-8 rounded-lg bg-[var(--card-bg)] border border-[var(--border)] flex items-center justify-center shrink-0 group-hover:border-[var(--neon)]/30 group-hover:bg-[var(--neon)]/8 transition-all">
+                              <item.icon className="w-4 h-4 text-[var(--muted2)] group-hover:text-[var(--neon)] transition-colors" />
+                            </div>
                             {item.label}
                           </button>
                         ))}
                       </div>
 
-                      <div className="h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent w-full" />
+                      <div className="h-px bg-[var(--border)] w-full" />
 
-                      <div className="p-3">
+                      {/* Log out — rose square box */}
+                      <div className="p-2.5">
                         <button
                           onClick={() => { setIsProfileOpen(false); handleLogout(); }}
-                          className="w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl border border-rose-500/20 hover:border-rose-500/40 bg-rose-500/5 hover:bg-rose-500/10 text-[13px] font-bold text-rose-400 hover:text-rose-300 transition-all cursor-pointer text-left group shadow-sm hover:shadow-rose-500/5"
+                          className="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl border border-rose-500/25 bg-rose-500/5 hover:bg-rose-500/12 hover:border-rose-500/50 text-[13px] font-semibold text-rose-400 hover:text-rose-300 transition-all cursor-pointer text-left group"
                         >
-                          <LogOut className="w-4 h-4" />
+                          <div className="w-8 h-8 rounded-lg bg-rose-500/10 border border-rose-500/25 flex items-center justify-center shrink-0 group-hover:bg-rose-500/20 group-hover:border-rose-500/40 transition-all">
+                            <LogOut className="w-4 h-4" />
+                          </div>
                           Log Out
                         </button>
                       </div>
