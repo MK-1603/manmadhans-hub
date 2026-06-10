@@ -125,11 +125,11 @@ export const NotepadWidget = () => {
   const wordCount = activeNote && activeNote.content.trim() ? activeNote.content.trim().split(/\s+/).length : 0;
 
   return (
-    <div className="w-full h-full flex font-sans bg-[var(--bg)] animate-in fade-in slide-in-from-bottom-4 duration-700 overflow-hidden">
+    <div className="w-full h-full flex flex-col md:flex-row font-sans bg-[var(--bg)] animate-in fade-in slide-in-from-bottom-4 duration-700 overflow-hidden">
       <ConfirmModal {...modalProps} />
 
       {/* ── SIDEBAR (NOTES LIST) ───────────────────────── */}
-      <div className="w-72 shrink-0 border-r border-[var(--border2)] flex flex-col bg-[var(--bg4)]/30">
+      <div className="w-full md:w-72 h-48 md:h-full shrink-0 border-b md:border-b-0 md:border-r border-[var(--border2)] flex flex-col bg-[var(--bg4)]/30">
         <div className="h-14 shrink-0 flex items-center justify-between px-5 border-b border-[var(--border2)]">
           <div className="flex items-center gap-2">
             <div className="p-1.5 rounded-lg bg-[var(--neon)]/10 text-[var(--neon)]">
@@ -187,8 +187,8 @@ export const NotepadWidget = () => {
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Header */}
-        <div className="relative h-14 shrink-0 flex items-center justify-between px-6 border-b border-[var(--border2)] z-10 bg-[var(--bg4)]/10">
-          <div className="flex items-center gap-3">
+        <div className="relative h-14 shrink-0 flex items-center justify-between px-4 md:px-6 border-b border-[var(--border2)] z-10 bg-[var(--bg4)]/10">
+          <div className="flex items-center gap-2 md:gap-3">
             {activeNote && (
               <span className="text-[10px] font-mono font-bold text-[var(--muted)] tracking-widest bg-[var(--input-bg)] px-3 py-1 rounded-lg border border-[var(--border)]">
                 Last edited: {new Date(activeNote.updatedAt).toLocaleTimeString()}
@@ -237,7 +237,7 @@ export const NotepadWidget = () => {
 
         {/* Text Area */}
         <div className="flex-1 relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-12 border-r border-[var(--border2)]/40 bg-[var(--bg4)]/20 pointer-events-none flex flex-col pt-6 gap-[1.625rem] items-center overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-10 md:w-12 border-r border-[var(--border2)]/40 bg-[var(--bg4)]/20 pointer-events-none flex flex-col pt-4 md:pt-6 gap-[1.625rem] items-center overflow-hidden">
             {Array.from({ length: Math.max(lineCount + 2, 15) }).map((_, i) => (
               <span key={i} className="text-[9px] font-mono font-bold text-[var(--muted2)]/40 leading-none select-none">
                 {i + 1}
@@ -252,7 +252,7 @@ export const NotepadWidget = () => {
             onBlur={() => setIsFocused(false)}
             disabled={!activeNote}
             placeholder={activeNote ? "Start typing your notes here...\nAuto-saves as you type." : "Create a new note to start typing..."}
-            className="w-full h-full bg-transparent resize-none outline-none pl-16 pr-8 pt-6 pb-6 text-[14px] leading-[1.625rem] font-medium text-[var(--text)] placeholder:text-[var(--muted2)]/40 custom-scrollbar"
+            className="w-full h-full bg-transparent resize-none outline-none pl-12 md:pl-16 pr-4 md:pr-8 pt-4 md:pt-6 pb-6 text-[14px] leading-[1.625rem] font-medium text-[var(--text)] placeholder:text-[var(--muted2)]/40 custom-scrollbar"
             spellCheck={false}
             style={{ fontFamily: "'Fira Code', 'Cascadia Code', monospace" }}
           />
@@ -270,8 +270,8 @@ export const NotepadWidget = () => {
         </div>
 
         {/* Footer */}
-        <div className="shrink-0 h-10 flex items-center justify-between px-6 border-t border-[var(--border2)] z-10 bg-[var(--bg4)]/10">
-          <div className="flex items-center gap-6">
+        <div className="shrink-0 h-10 flex items-center justify-between px-3 md:px-6 border-t border-[var(--border2)] z-10 bg-[var(--bg4)]/10 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-4 md:gap-6 shrink-0">
             <div className="flex items-center gap-2">
               <FileText className="w-3.5 h-3.5 text-[var(--muted2)]" />
               <span className="text-[9px] font-black text-[var(--muted2)] uppercase tracking-widest">{wordCount} words</span>
