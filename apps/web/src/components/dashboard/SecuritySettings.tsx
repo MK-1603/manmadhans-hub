@@ -115,7 +115,21 @@ export const SecuritySettings = ({ onTabChange, onBack }: { onTabChange?: (tabId
     if (socket.connected) {
       socket.emit('request_my_sessions', displayName);
     }
-    const onSessionsUpdate = (sessions: any[]) => setMySessions(sessions);
+    const onSessionsUpdate = (sessions: any[]) => {
+      const hasCurrent = sessions.some(s => s.id === socket.id);
+      if (!hasCurrent) {
+        setMySessions([{
+          id: socket.id || 'current-session',
+          browser: typeof window !== 'undefined' && navigator.userAgent.includes('Mobile') ? 'Mobile Browser' : 'Desktop Browser',
+          location: 'Current Location',
+          ip: 'Local Network',
+          active: true,
+          isCurrentFallback: true
+        }, ...sessions]);
+      } else {
+        setMySessions(sessions);
+      }
+    };
     
     socket.on('sessions_update', onSessionsUpdate);
     const onConnect = () => socket.emit('request_my_sessions', displayName);
@@ -428,7 +442,7 @@ export const SecuritySettings = ({ onTabChange, onBack }: { onTabChange?: (tabId
               mySessions.map(sess => {
                 const isDesktop = sess.browser?.includes('Desktop') || sess.browser?.includes('Mac') || sess.browser?.includes('Windows');
                 const isMobile = sess.browser?.includes('iOS') || sess.browser?.includes('Android') || sess.browser?.includes('Mobile');
-                const isCurrent = sess.id === socket.id;
+                const isCurrent = sess.id === socket.id || sess.isCurrentFallback;
 
                 return (
                   <div key={sess.id} className={`p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center gap-4 transition-colors shrink-0 ${isCurrent ? 'bg-[var(--neon)]/5 border-[var(--neon)]/20' : 'bg-[var(--bg)] border-[var(--border)] hover:bg-[var(--card-bg)]'}`}>
@@ -452,6 +466,7 @@ export const SecuritySettings = ({ onTabChange, onBack }: { onTabChange?: (tabId
                       </div>
                       
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-[var(--muted2)] font-mono">
+                        <span className="flex items-center gap-1"><Globe2 size={10} /> ID: {sess.id}</span>
                         <span className="flex items-center gap-1"><Globe2 size={10} /> {sess.location || 'Unknown Location'}</span>
                         <span className="flex items-center gap-1"><Wifi size={10} /> {sess.ip || 'Unknown IP'}</span>
                       </div>

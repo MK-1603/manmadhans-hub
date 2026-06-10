@@ -790,7 +790,7 @@ export const SearchAITools = ({
       />
 
       {/* ── Sticky Header & Filter Area ── */}
-      <div className="sticky top-0 z-[100] bg-black shadow-[0_4px_20px_-5px_rgba(0,0,0,0.5)] pt-4 pb-2 mb-6 border-b border-[var(--border)]">
+      <div className="sticky -top-3 md:-top-4 z-[100] bg-[var(--bg)]/85 backdrop-blur-2xl shadow-[0_4px_30px_-5px_rgba(0,0,0,0.3)] pt-7 md:pt-8 pb-2 mb-6 border-b border-[var(--border)]">
         {/* ── Header ── */}
         <PremiumHeader
           badge="🔍 AI TOOLS REGISTRY"
@@ -2369,7 +2369,7 @@ export const ExploreTools = ({ onViewDetails }: { onViewDetails: (id: string | n
       />
 
       {/* ── Sticky Header & Filter Area ── */}
-      <div className="sticky top-0 z-[100] bg-black shadow-[0_4px_20px_-5px_rgba(0,0,0,0.5)] pt-4 pb-2 mb-6 border-b border-[var(--border)]">
+      <div className="sticky -top-3 md:-top-4 z-[100] bg-[var(--bg)]/85 backdrop-blur-2xl shadow-[0_4px_30px_-5px_rgba(0,0,0,0.3)] pt-7 md:pt-8 pb-2 mb-6 border-b border-[var(--border)]">
         {/* ── Header ── */}
         <PremiumHeader
           badge="🔍 AI SYSTEMS REGISTRY"
@@ -3012,7 +3012,7 @@ export const DailyAITools = ({ onViewDetails, onTabChange }: { onViewDetails: (i
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-5 md:p-6 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:border-[var(--neon)]/40 transition-all cursor-pointer"
-                        onClick={() => onTabChange?.('registry')}
+                        onClick={() => onTabChange?.('my-registry')}
                       >
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 rounded-2xl bg-[var(--neon)]/10 border border-[var(--neon)]/20 flex items-center justify-center shadow-sm shrink-0">
@@ -3051,7 +3051,7 @@ export const DailyAITools = ({ onViewDetails, onTabChange }: { onViewDetails: (i
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-5 md:p-6 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:border-[var(--emerald)]/40 transition-all cursor-pointer"
-                        onClick={() => onTabChange?.('registry')}
+                        onClick={() => onTabChange?.('my-registry')}
                       >
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 rounded-2xl bg-[var(--emerald)]/10 border border-[var(--emerald)]/20 flex items-center justify-center shadow-sm shrink-0">

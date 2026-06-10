@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { FolderOpen, Search, Plus, Edit3, Trash2, Zap, ArrowLeft, Save, Info, Fingerprint, Loader2, X, Tag, Boxes, ChevronRight, Hash } from 'lucide-react';
+import { FolderOpen, Search, Plus, Edit3, Trash2, Zap, ArrowLeft, Save, Info, Fingerprint, Loader2, X, Tag, Boxes, ChevronRight, ChevronDown, Hash } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from './ToastContext';
 import { ConfirmModal, useConfirmModal } from './ConfirmModal';
@@ -32,6 +32,7 @@ export const CategoryManagement = () => {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [viewLevel, setViewLevel] = useState<'main' | 'sub' | 'micro'>('main');
+  const [isViewDropdownOpen, setIsViewDropdownOpen] = useState(false);
 
   const fetchData = async () => {
     setLoading(true);
@@ -246,19 +247,41 @@ export const CategoryManagement = () => {
             <div>
               <h1 className="text-2xl md:text-3xl font-black text-[var(--text)] tracking-tight font-royal leading-none mb-1 flex items-center gap-3">
                 Category Registry
-                <div className="relative inline-block text-left mt-1">
-                  <select 
-                    value={viewLevel}
-                    onChange={(e) => setViewLevel(e.target.value as 'main' | 'sub' | 'micro')}
-                    className="appearance-none bg-[var(--input-bg)] border border-[var(--border)] text-[12px] font-black uppercase tracking-widest text-[var(--muted)] hover:text-[var(--neon)] hover:border-[var(--neon)]/30 rounded-xl px-3 py-1.5 pr-8 focus:outline-none focus:ring-2 focus:ring-[var(--neon)]/20 transition-all cursor-pointer font-sans"
+                <div className="relative inline-block text-left mt-1 z-50">
+                  <button 
+                    onClick={() => setIsViewDropdownOpen(!isViewDropdownOpen)}
+                    className="bg-[var(--input-bg)] border border-[var(--border)] text-[12px] font-black uppercase tracking-widest text-[var(--muted)] hover:text-[var(--neon)] hover:border-[var(--neon)]/30 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[var(--neon)]/20 transition-all cursor-pointer font-sans flex items-center gap-2"
                   >
-                    <option value="main">Main Categories</option>
-                    <option value="sub">Sub Categories</option>
-                    <option value="micro">Micro Categories</option>
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[var(--muted)]">
-                    <ChevronRight size={14} className="rotate-90" />
-                  </div>
+                    {viewLevel === 'main' ? 'Main Categories' : viewLevel === 'sub' ? 'Sub Categories' : 'Micro Categories'}
+                    <ChevronDown size={14} className={`transition-transform duration-200 ${isViewDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {isViewDropdownOpen && (
+                      <>
+                        <div className="fixed inset-0 z-[90]" onClick={() => setIsViewDropdownOpen(false)} />
+                        <motion.div
+                          initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                          className="absolute top-full left-0 min-w-[12rem] bg-[var(--card-bg)] border border-[var(--border)] rounded-2xl mt-2 p-2 z-[100] shadow-2xl backdrop-blur-xl space-y-0.5"
+                        >
+                          {[
+                            { value: 'main', label: 'Main Categories' },
+                            { value: 'sub', label: 'Sub Categories' },
+                            { value: 'micro', label: 'Micro Categories' },
+                          ].map(opt => (
+                            <button
+                              key={opt.value}
+                              onClick={() => { setViewLevel(opt.value as any); setIsViewDropdownOpen(false); }}
+                              className={`w-full text-left px-3 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest font-mono transition-all cursor-pointer flex items-center justify-between ${viewLevel === opt.value ? 'bg-[var(--neon)]/10 text-[var(--neon)]' : 'text-[var(--muted)] hover:bg-[var(--input-bg)] hover:text-[var(--text)]'}`}
+                            >
+                              <span>{opt.label}</span>
+                            </button>
+                          ))}
+                        </motion.div>
+                      </>
+                    )}
+                  </AnimatePresence>
                 </div>
               </h1>
               <p className="text-[12px] font-medium text-[var(--muted)]">

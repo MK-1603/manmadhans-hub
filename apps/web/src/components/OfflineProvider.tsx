@@ -27,7 +27,7 @@ function registerServiceWorker() {
   // We allow SW registration in development because sw.js already bypasses localhost caching,
   // and we need the SW active to trigger the beforeinstallprompt event for PWA testing.
 
-  window.addEventListener("load", () => {
+  const register = () => {
     navigator.serviceWorker
       .register("/sw.js", { scope: "/" })
       .then((reg) => {
@@ -45,7 +45,13 @@ function registerServiceWorker() {
         });
       })
       .catch((err) => console.warn("[SW] Registration failed:", err));
-  });
+  };
+
+  if (document.readyState === "complete") {
+    register();
+  } else {
+    window.addEventListener("load", register);
+  }
 }
 
 // ── Pre-cache API data ────────────────────────────────────
@@ -138,8 +144,8 @@ export default function OfflineProvider({ children }: { children: React.ReactNod
           aria-live="assertive"
         >
           <WifiOff size={16} className="shrink-0" />
-          <span className="tracking-wide uppercase text-[11px]">
-            Offline Mode — Showing cached data
+          <span className="tracking-widest uppercase text-[11px] whitespace-nowrap">
+            Offline
           </span>
           <button
             onClick={() => window.location.reload()}
@@ -160,8 +166,8 @@ export default function OfflineProvider({ children }: { children: React.ReactNod
           aria-live="polite"
         >
           <Wifi size={16} className="shrink-0" />
-          <span className="tracking-wide uppercase text-[11px]">
-            Connection Restored — Syncing data...
+          <span className="tracking-widest uppercase text-[11px] whitespace-nowrap">
+            Back Online
           </span>
         </div>
       )}

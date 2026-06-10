@@ -220,12 +220,12 @@ export const AppSettings = ({ onTabChange, role }: { onTabChange: (tab: string) 
                 animate={{ opacity: 1, height: 'auto', y: 0 }} 
                 exit={{ opacity: 0, height: 0, y: -10 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="overflow-hidden"
+                className={isTimeoutDropdownOpen ? "overflow-visible" : "overflow-hidden"}
               >
-                <div className="p-6 md:p-8 rounded-[24px] bg-[var(--card-bg)] border border-[var(--border)] space-y-8 relative overflow-hidden shadow-lg mt-2">
+                <div className="p-6 md:p-8 rounded-[24px] bg-[var(--card-bg)] border border-[var(--border)] space-y-8 relative shadow-lg mt-2">
                   {/* Decorative background overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--emerald)]/[0.02] to-transparent pointer-events-none" />
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--emerald)]/40 to-transparent opacity-50" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--emerald)]/[0.02] to-transparent pointer-events-none rounded-[24px]" />
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--emerald)]/40 to-transparent opacity-50 rounded-t-[24px]" />
                   
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
                     <div className="space-y-3">
@@ -280,7 +280,7 @@ export const AppSettings = ({ onTabChange, role }: { onTabChange: (tab: string) 
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: -5, scale: 0.98 }}
                                 transition={{ duration: 0.15 }}
-                                className="absolute top-full left-0 right-0 mt-3 bg-[var(--card-bg)] border border-[var(--border2)] rounded-2xl shadow-[0_15px_50px_rgba(0,0,0,0.6)] overflow-hidden z-50 flex flex-col p-2 backdrop-blur-2xl"
+                                className="absolute top-full left-0 right-0 mt-3 bg-[var(--card-bg)] border border-[var(--emerald)]/20 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden z-[999] flex flex-col p-2 backdrop-blur-3xl"
                               >
                                 {[
                                   { value: '1', label: '1 Minute', desc: 'Maximum security' },

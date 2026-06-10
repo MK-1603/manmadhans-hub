@@ -216,18 +216,27 @@ export const PlatformSettings = ({ onTabChange }: { onTabChange?: (tabId: string
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Current Version */}
             <div className="p-4 rounded-2xl bg-[var(--bg)] border border-[var(--border)] flex flex-col">
-               <label className={labelCls}>Current Deployment</label>
-               <div className="mt-3 flex items-center gap-3">
-                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-                   <Cpu size={20} />
+               <label className={labelCls}>Current Deployment (Editable)</label>
+               <div className="mt-3 flex flex-col gap-3">
+                 <div className="flex items-center gap-3">
+                   <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                     <Cpu size={20} />
+                   </div>
+                   <div className="flex-1 min-w-0 space-y-1">
+                     <input 
+                       value={systemVersion} onChange={e => setSystemVersion(e.target.value)}
+                       className="w-full bg-transparent border-b border-[var(--border)] hover:border-[var(--border2)] focus:border-blue-500/50 text-xl font-black text-[var(--text)] tracking-tight truncate focus:outline-none transition-colors"
+                     />
+                     <input 
+                       value={versionFeature} onChange={e => setVersionFeature(e.target.value)}
+                       className="w-full bg-transparent border-b border-[var(--border)] hover:border-[var(--border2)] focus:border-blue-500/50 text-[10px] text-[var(--muted2)] font-mono uppercase tracking-widest truncate focus:outline-none transition-colors"
+                     />
+                   </div>
                  </div>
-                 <div className="min-w-0">
-                   <p className="text-xl font-black text-[var(--text)] tracking-tight truncate">{systemVersion}</p>
-                   <p className="text-[10px] text-[var(--muted2)] font-mono uppercase tracking-widest truncate">{versionFeature}</p>
-                 </div>
-               </div>
-               <div className="mt-4 p-3 flex-1 rounded-xl bg-black/30 border border-[var(--border)] overflow-y-auto no-scrollbar">
-                 <p className="text-[10px] font-mono text-[var(--muted)] leading-relaxed whitespace-pre-wrap">{versionDetails}</p>
+                 <textarea 
+                   value={versionDetails} onChange={e => setVersionDetails(e.target.value)}
+                   className="mt-2 w-full h-32 p-3 rounded-xl bg-black/30 border border-[var(--border)] focus:border-blue-500/50 text-[10px] font-mono text-[var(--muted)] leading-relaxed resize-none focus:outline-none transition-colors"
+                 />
                </div>
             </div>
 
@@ -327,9 +336,9 @@ export const PlatformSettings = ({ onTabChange }: { onTabChange?: (tabId: string
                     </div>
                     
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-[var(--muted2)] font-mono">
-                      <span className="flex items-center gap-1"><Cpu size={10} /> {sess.browser}</span>
-                      <span className="flex items-center gap-1"><Globe2 size={10} /> {sess.location}</span>
-                      <span className="flex items-center gap-1"><Wifi size={10} /> {sess.ip}</span>
+                      <span className="flex items-center gap-1"><Cpu size={10} /> ID: {sess.id}</span>
+                      <span className="flex items-center gap-1"><Globe2 size={10} /> {sess.location || 'Unknown Location'}</span>
+                      <span className="flex items-center gap-1"><Wifi size={10} /> {sess.ip || 'Unknown IP'}</span>
                     </div>
                   </div>
                 </div>

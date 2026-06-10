@@ -1277,7 +1277,7 @@ function DashboardContent() {
                 {activeTab === 'about-app' && <AboutApp />}
                 {activeTab === 'compare' && <CompareTools initialTools={toolsToCompare} />}
                 {activeTab === 'search-ai' && <SearchAITools initialCategory={initialToolFilter} initialSearchQuery={initialToolSearchQuery} onViewDetails={handleViewDetails} onCompareTools={(ids) => { setToolsToCompare(ids); setActiveTab('compare'); window.location.hash = 'compare'; localStorage.setItem('dashboard_active_tab', 'compare'); }} />}
-                {activeTab === 'daily-ai' && <DailyAITools onViewDetails={handleViewDetails} />}
+                {activeTab === 'daily-ai' && <DailyAITools onViewDetails={handleViewDetails} onTabChange={handleTabChange} />}
                 {activeTab === 'explore-tools' && <ExploreTools onViewDetails={handleViewDetails} />}
                 {activeTab === 'explore-categories' && <ExploreCategories onExploreCategory={handleExploreCategory} />}
                 {activeTab === 'category-tools' && (
