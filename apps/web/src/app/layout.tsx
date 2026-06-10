@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://manmadhans-hub.vercel.app"),
+  metadataBase: new URL("https://manmadhans-hub-web.vercel.app"),
   title: "ManMadhan’s Hub — Futuristic AI Discovery Platform",
   description: "A futuristic AI ecosystem engineered for creators, developers, and intelligent teams to discover, automate, organize, and orchestrate next-generation AI workflows.",
   keywords: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://manmadhans-hub.vercel.app",
+    url: "https://manmadhans-hub-web.vercel.app",
     title: "ManMadhan’s Hub — Futuristic AI Discovery Platform",
     description: "A futuristic AI ecosystem engineered for creators, developers, and intelligent teams.",
     siteName: "ManMadhan’s Hub",

@@ -70,8 +70,8 @@ export const AboutApp = () => {
             <span className="text-[12px] text-[var(--text)] font-medium">Enterprise Elite</span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-[12px] text-[var(--muted)]">Active Deployment</span>
-            <span className="text-[12px] text-[var(--text)] font-medium">{new Date().toISOString().split('T')[0]}</span>
+            <span className="text-[12px] text-[var(--muted)]">Launch Date</span>
+            <span className="text-[12px] text-[var(--text)] font-medium">10-6-26</span>
           </div>
         </div>
 
