@@ -282,7 +282,7 @@ export const AppSettings = ({ onTabChange, role }: { onTabChange: (tab: string) 
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: -5, scale: 0.98 }}
                                 transition={{ duration: 0.15 }}
-                                className="absolute top-full left-0 right-0 mt-2 bg-[var(--card-bg)] border border-[var(--emerald)]/20 rounded-[1.25rem] shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden z-[999] flex flex-col p-1.5 backdrop-blur-3xl"
+                                className="absolute top-full left-0 right-0 mt-2 bg-[var(--card-bg)] border border-[var(--emerald)]/20 rounded-[1.25rem] shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-y-auto max-h-[160px] z-[999] flex flex-col p-1.5 backdrop-blur-3xl no-scrollbar"
                               >
                                 {[
                                   { value: '1', label: '1 Minute', desc: 'Maximum security' },
@@ -297,10 +297,10 @@ export const AppSettings = ({ onTabChange, role }: { onTabChange: (tab: string) 
                                       setAppLockTimeout(option.value);
                                       setIsTimeoutDropdownOpen(false);
                                     }}
-                                    className={`px-4 py-2.5 rounded-xl text-left transition-all flex items-center justify-between group ${appLockTimeout === option.value ? 'bg-[var(--emerald)]/10 text-[var(--emerald)]' : 'hover:bg-[var(--bg)] text-[var(--text)]'}`}
+                                    className={`px-3 py-2 rounded-xl text-left transition-all flex items-center justify-between group shrink-0 ${appLockTimeout === option.value ? 'bg-[var(--emerald)]/10 text-[var(--emerald)]' : 'hover:bg-[var(--bg)] text-[var(--text)]'}`}
                                   >
-                                    <div className="flex flex-col gap-0.5">
-                                      <span className="text-[13px] font-bold tracking-wide">{option.label}</span>
+                                    <div className="flex flex-col">
+                                      <span className="text-[12px] font-bold tracking-wide">{option.label}</span>
                                       <span className={`text-[9px] font-mono ${appLockTimeout === option.value ? 'text-[var(--emerald)]/70' : 'text-[var(--muted)]'}`}>{option.desc}</span>
                                     </div>
                                     {appLockTimeout === option.value && (
