@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Manmadhan's Hub",
-    short_name: 'Manmadhan',
+    name: "ManMadhan's Hub",
+    short_name: 'ManMadhan',
     description: 'A futuristic AI ecosystem engineered for creators, developers, and intelligent teams to discover, automate, organize, and orchestrate next-generation AI workflows.',
     start_url: '/',
     display: 'standalone',
@@ -14,7 +14,7 @@ export default function manifest(): MetadataRoute.Manifest {
     icons: [
       {
         src: '/favicon.ico',
-        sizes: '48x48',
+        sizes: 'any',
         type: 'image/x-icon',
       },
       {

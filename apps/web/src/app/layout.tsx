@@ -29,20 +29,20 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://manmadhans-hub.vercel.app"),
-  title: "Manmadhan’s Hub — Futuristic AI Discovery Platform",
+  title: "ManMadhan’s Hub — Futuristic AI Discovery Platform",
   description: "A futuristic AI ecosystem engineered for creators, developers, and intelligent teams to discover, automate, organize, and orchestrate next-generation AI workflows.",
   keywords: [
     "AI Tools", "AI Platform", "AI Discovery", "AI Workflow",
     "AI Automation", "Artificial Intelligence", "Neural Systems",
     "AI Ecosystem", "AI Operating System", "Future AI", "AI Infrastructure"
   ],
-  authors: [{ name: "Manmadhan" }],
-  creator: "Manmadhan",
-  publisher: "Manmadhan",
+  authors: [{ name: "ManMadhan" }],
+  creator: "ManMadhan",
+  publisher: "ManMadhan",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Manmadhan",
+    title: "ManMadhan",
     startupImage: [
       {
         url: "/icons/icon-512x512.png",
@@ -53,21 +53,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://manmadhans-hub.vercel.app",
-    title: "Manmadhan’s Hub — Futuristic AI Discovery Platform",
+    title: "ManMadhan’s Hub — Futuristic AI Discovery Platform",
     description: "A futuristic AI ecosystem engineered for creators, developers, and intelligent teams.",
-    siteName: "Manmadhan’s Hub",
+    siteName: "ManMadhan’s Hub",
     images: [
       {
         url: "/icons/icon-512x512.png",
         width: 512,
         height: 512,
-        alt: "Manmadhan’s Hub",
+        alt: "ManMadhan’s Hub",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Manmadhan’s Hub — Futuristic AI Discovery Platform",
+    title: "ManMadhan’s Hub — Futuristic AI Discovery Platform",
     description: "A futuristic AI ecosystem engineered for creators, developers, and intelligent teams.",
     images: ["/icons/icon-512x512.png"],
   },

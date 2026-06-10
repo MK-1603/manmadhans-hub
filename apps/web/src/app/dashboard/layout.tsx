@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Manmadhan'S Hub - Private AI HUB",
-  description: "Secure Administrative Nexus for Manmadhan's Hub",
+  title: "ManMadhan's Hub - Private AI HUB",
+  description: "Secure Administrative Nexus for ManMadhan's Hub",
 };
 
 export default function DashboardLayout({
