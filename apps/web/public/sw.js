@@ -46,10 +46,7 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Disable caching on localhost/development environment to avoid HMR and Next.js static chunks caching
-  if (url.hostname === 'localhost' || url.hostname === '127.0.0.1') {
-    return;
-  }
+  // Localhost caching enabled for offline PWA testing
 
   // Skip non-GET, chrome-extension, and socket.io requests
   if (

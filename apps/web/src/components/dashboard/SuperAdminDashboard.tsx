@@ -1149,19 +1149,19 @@ function DashboardContent() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.98 }}
                       transition={{ duration: 0.15, ease: 'easeOut' }}
-                      className="fixed right-4 left-auto top-20 sm:absolute sm:right-0 sm:top-[calc(100%+0.5rem)] sm:w-[12rem]
-                        bg-[#1c1c1e] dark:bg-[#1c1c1e] rounded-[1.25rem] shadow-2xl border border-white/5 z-[2000] overflow-hidden"
+                      className="fixed right-4 left-auto top-20 sm:absolute sm:right-0 sm:top-[calc(100%+0.5rem)] sm:w-[13rem]
+                        bg-[var(--card-bg)]/90 backdrop-blur-3xl rounded-[1.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-[var(--border2)] z-[2000] overflow-hidden"
                     >
-                      <div className="px-4 pt-4 pb-3">
-                        <span className="block text-[15px] font-bold text-white truncate">{displayUsername}</span>
-                        <span className="block text-[13px] font-medium text-gray-400 mt-0.5">
-                          {currentRole === 'owner' ? 'Owner' : currentRole === 'owner' ? 'Owner' : 'Member'}
+                      <div className="px-5 pt-5 pb-3">
+                        <span className="block text-[15px] font-black text-[var(--text)] tracking-tight truncate">{displayUsername}</span>
+                        <span className="inline-flex items-center gap-1 mt-1 px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-widest bg-[var(--neon)]/10 text-[var(--neon)] border border-[var(--neon)]/20">
+                          {currentRole === 'owner' ? 'Owner' : 'Member'}
                         </span>
                       </div>
 
-                      <div className="h-px bg-white/5 w-full" />
+                      <div className="h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent w-full" />
 
-                      <div className="p-1.5 space-y-0.5 mt-0.5">
+                      <div className="p-2 space-y-1 mt-1">
                         {[
                           { id: 'profile', icon: User, label: 'Profile' },
                           { id: 'account-center', icon: ShieldCheck, label: 'Security' },
@@ -1170,22 +1170,26 @@ function DashboardContent() {
                           <button
                             key={item.id}
                             onClick={() => { handleTabChange(item.id); setIsProfileOpen(false); }}
-                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-[0.85rem] text-[14px] font-medium text-gray-200 hover:bg-white/5 transition-colors cursor-pointer text-left"
+                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-bold text-[var(--muted)] hover:text-[var(--text)] hover:bg-[var(--bg)] transition-all cursor-pointer text-left group"
                           >
-                            <item.icon className="w-[18px] h-[18px] text-gray-400" />
+                            <div className="p-1.5 rounded-lg bg-[var(--bg)] border border-[var(--border)] group-hover:border-[var(--neon)]/30 group-hover:bg-[var(--neon)]/10 transition-colors">
+                              <item.icon className="w-4 h-4 text-[var(--muted2)] group-hover:text-[var(--neon)] transition-colors" />
+                            </div>
                             {item.label}
                           </button>
                         ))}
                       </div>
 
-                      <div className="h-px bg-white/5 w-full my-0.5" />
+                      <div className="h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent w-full my-1" />
 
-                      <div className="p-1.5 mb-0.5">
+                      <div className="p-2 mb-1">
                         <button
                           onClick={() => { setIsProfileOpen(false); handleLogout(); }}
-                          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-[0.85rem] text-[14px] font-medium text-[#F87171] hover:bg-white/5 transition-colors cursor-pointer text-left"
+                          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-bold text-rose-400 hover:text-white hover:bg-rose-500 transition-all cursor-pointer text-left group shadow-sm shadow-rose-500/5 hover:shadow-rose-500/20"
                         >
-                          <LogOut className="w-[18px] h-[18px] text-[#F87171]" />
+                          <div className="p-1.5 rounded-lg bg-rose-500/10 border border-rose-500/20 group-hover:bg-transparent group-hover:border-white/20 transition-colors">
+                            <LogOut className="w-4 h-4" />
+                          </div>
                           Log Out
                         </button>
                       </div>
