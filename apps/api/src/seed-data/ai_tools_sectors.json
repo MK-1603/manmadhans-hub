@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "total_sectors": 15,
+    "total_tools": 1271,
+    "generated_at": "2026-05-19"
+  },
+  "sectors": [
+    {
+      "sector_id": "SEC001",
+      "sector_name": "Content & Media",
+      "sector_icon": "📝",
+      "tool_count": 654,
+      "category_count": 7,
+      "category_ids": [
+        "CAT001",
+        "CAT002",
+        "CAT003",
+        "CAT004",
+        "CAT005",
+        "CAT006",
+        "CAT008"
+      ]
+    },
+    {
+      "sector_id": "SEC002",
+      "sector_name": "Development & Engineering",
+      "sector_icon": "💻",
+      "tool_count": 129,
+      "category_count": 7,
+      "category_ids": [
+        "CAT009",
+        "CAT010",
+        "CAT011",
+        "CAT012",
+        "CAT013",
+        "CAT014",
+        "CAT015"
+      ]
+    },
+    {
+      "sector_id": "SEC003",
+      "sector_name": "Design & Creative",
+      "sector_icon": "🎨",
+      "tool_count": 78,
+      "category_count": 6,
+      "category_ids": [
+        "CAT016",
+        "CAT017",
+        "CAT018",
+        "CAT019",
+        "CAT020",
+        "CAT021"
+      ]
+    },
+    {
+      "sector_id": "SEC010",
+      "sector_name": "AI Infrastructure",
+      "sector_icon": "🤖",
+      "tool_count": 76,
+      "category_count": 3,
+      "category_ids": [
+        "CAT048",
+        "CAT049",
+        "CAT050"
+      ]
+    },
+    {
+      "sector_id": "SEC012",
+      "sector_name": "Customer Support & CX",
+      "sector_icon": "💬",
+      "tool_count": 72,
+      "category_count": 1,
+      "category_ids": [
+        "CAT053"
+      ]
+    },
+    {
+      "sector_id": "SEC005",
+      "sector_name": "Productivity & Collaboration",
+      "sector_icon": "⚡",
+      "tool_count": 59,
+      "category_count": 6,
+      "category_ids": [
+        "CAT027",
+        "CAT028",
+        "CAT029",
+        "CAT030",
+        "CAT031",
+        "CAT032"
+      ]
+    },
+    {
+      "sector_id": "SEC004",
+      "sector_name": "Marketing & Sales",
+      "sector_icon": "📈",
+      "tool_count": 55,
+      "category_count": 4,
+      "category_ids": [
+        "CAT022",
+        "CAT023",
+        "CAT024",
+        "CAT025"
+      ]
+    },
+    {
+      "sector_id": "SEC006",
+      "sector_name": "Education & Research",
+      "sector_icon": "🎓",
+      "tool_count": 46,
+      "category_count": 3,
+      "category_ids": [
+        "CAT033",
+        "CAT034",
+        "CAT035"
+      ]
+    },
+    {
+      "sector_id": "SEC007",
+      "sector_name": "Business & Finance",
+      "sector_icon": "💼",
+      "tool_count": 25,
+      "category_count": 4,
+      "category_ids": [
+        "CAT038",
+        "CAT039",
+        "CAT040",
+        "CAT041"
+      ]
+    },
+    {
+      "sector_id": "SEC013",
+      "sector_name": "Legal & HR",
+      "sector_icon": "⚖️",
+      "tool_count": 19,
+      "category_count": 2,
+      "category_ids": [
+        "CAT055",
+        "CAT056"
+      ]
+    },
+    {
+      "sector_id": "SEC008",
+      "sector_name": "Healthcare & Wellness",
+      "sector_icon": "🏥",
+      "tool_count": 19,
+      "category_count": 2,
+      "category_ids": [
+        "CAT042",
+        "CAT044"
+      ]
+    },
+    {
+      "sector_id": "SEC011",
+      "sector_name": "Security & Compliance",
+      "sector_icon": "🔒",
+      "tool_count": 14,
+      "category_count": 2,
+      "category_ids": [
+        "CAT051",
+        "CAT052"
+      ]
+    },
+    {
+      "sector_id": "SEC009",
+      "sector_name": "Data & Analytics",
+      "sector_icon": "📊",
+      "tool_count": 12,
+      "category_count": 3,
+      "category_ids": [
+        "CAT045",
+        "CAT046",
+        "CAT047"
+      ]
+    },
+    {
+      "sector_id": "SEC014",
+      "sector_name": "Entertainment & Gaming",
+      "sector_icon": "🎮",
+      "tool_count": 7,
+      "category_count": 2,
+      "category_ids": [
+        "CAT057",
+        "CAT058"
+      ]
+    },
+    {
+      "sector_id": "SEC015",
+      "sector_name": "E-commerce & Retail",
+      "sector_icon": "🛒",
+      "tool_count": 6,
+      "category_count": 1,
+      "category_ids": [
+        "CAT059"
+      ]
+    }
+  ]
+}

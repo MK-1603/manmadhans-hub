@@ -1,0 +1,17 @@
+export const API_VERSION = 'v1';
+
+export const STATUS_CODES = {
+  OK: 200,
+  CREATED: 201,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500,
+};
+
+export const MESSAGES = {
+  SERVER_ERROR: 'Something went wrong on our end.',
+  NOT_FOUND: 'Resource not found.',
+  AUTH_REQUIRED: 'Authentication is required.',
+};

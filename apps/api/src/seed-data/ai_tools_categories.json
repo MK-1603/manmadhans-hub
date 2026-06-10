@@ -1,0 +1,539 @@
+{
+  "meta": {
+    "total_categories": 53,
+    "total_tools": 1271,
+    "generated_at": "2026-05-19"
+  },
+  "categories": [
+    {
+      "category_id": "CAT003",
+      "category_name": "Writing & Copywriting",
+      "category_icon": "✍️",
+      "tool_count": 504,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC001"
+      ]
+    },
+    {
+      "category_id": "CAT053",
+      "category_name": "Chatbots & Virtual Agents",
+      "category_icon": "🤖",
+      "tool_count": 72,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC012"
+      ]
+    },
+    {
+      "category_id": "CAT009",
+      "category_name": "Code Generation",
+      "category_icon": "⌨️",
+      "tool_count": 57,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC002"
+      ]
+    },
+    {
+      "category_id": "CAT001",
+      "category_name": "Video Generation",
+      "category_icon": "🎬",
+      "tool_count": 56,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC001"
+      ]
+    },
+    {
+      "category_id": "CAT048",
+      "category_name": "Agent Frameworks",
+      "category_icon": "🤖",
+      "tool_count": 48,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC010"
+      ]
+    },
+    {
+      "category_id": "CAT034",
+      "category_name": "Research Assistance",
+      "category_icon": "🔬",
+      "tool_count": 33,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC006"
+      ]
+    },
+    {
+      "category_id": "CAT004",
+      "category_name": "Image Generation",
+      "category_icon": "🖼️",
+      "tool_count": 32,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC001"
+      ]
+    },
+    {
+      "category_id": "CAT002",
+      "category_name": "Audio & Voice",
+      "category_icon": "🎙️",
+      "tool_count": 28,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC001"
+      ]
+    },
+    {
+      "category_id": "CAT016",
+      "category_name": "UI/UX Design",
+      "category_icon": "🎯",
+      "tool_count": 28,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC003"
+      ]
+    },
+    {
+      "category_id": "CAT024",
+      "category_name": "CRM & Sales Automation",
+      "category_icon": "🤝",
+      "tool_count": 26,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC004"
+      ]
+    },
+    {
+      "category_id": "CAT013",
+      "category_name": "No-Code / Low-Code",
+      "category_icon": "🧩",
+      "tool_count": 26,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC002"
+      ]
+    },
+    {
+      "category_id": "CAT029",
+      "category_name": "Task Automation",
+      "category_icon": "⚙️",
+      "tool_count": 23,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC005"
+      ]
+    },
+    {
+      "category_id": "CAT049",
+      "category_name": "LLM Tooling",
+      "category_icon": "🔧",
+      "tool_count": 18,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC010"
+      ]
+    },
+    {
+      "category_id": "CAT011",
+      "category_name": "DevOps & CI/CD",
+      "category_icon": "🔧",
+      "tool_count": 17,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC002"
+      ]
+    },
+    {
+      "category_id": "CAT010",
+      "category_name": "Code Review & Testing",
+      "category_icon": "🧪",
+      "tool_count": 16,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC002"
+      ]
+    },
+    {
+      "category_id": "CAT023",
+      "category_name": "Ad Creative",
+      "category_icon": "📢",
+      "tool_count": 16,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC004"
+      ]
+    },
+    {
+      "category_id": "CAT006",
+      "category_name": "SEO & Blogging",
+      "category_icon": "🔍",
+      "tool_count": 16,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC001"
+      ]
+    },
+    {
+      "category_id": "CAT042",
+      "category_name": "Skincare & Beauty",
+      "category_icon": "💄",
+      "tool_count": 16,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC008"
+      ]
+    },
+    {
+      "category_id": "CAT030",
+      "category_name": "Knowledge Management",
+      "category_icon": "🧠",
+      "tool_count": 13,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC005"
+      ]
+    },
+    {
+      "category_id": "CAT017",
+      "category_name": "Graphic Design",
+      "category_icon": "🖌️",
+      "tool_count": 12,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC003"
+      ]
+    },
+    {
+      "category_id": "CAT005",
+      "category_name": "Social Media Content",
+      "category_icon": "📱",
+      "tool_count": 11,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC001"
+      ]
+    },
+    {
+      "category_id": "CAT022",
+      "category_name": "Email Marketing",
+      "category_icon": "📧",
+      "tool_count": 11,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC004"
+      ]
+    },
+    {
+      "category_id": "CAT027",
+      "category_name": "Project Management",
+      "category_icon": "📋",
+      "tool_count": 10,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC005"
+      ]
+    },
+    {
+      "category_id": "CAT019",
+      "category_name": "Logo & Icon Design",
+      "category_icon": "💎",
+      "tool_count": 10,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC003"
+      ]
+    },
+    {
+      "category_id": "CAT056",
+      "category_name": "HR & Recruitment",
+      "category_icon": "👥",
+      "tool_count": 10,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC013"
+      ]
+    },
+    {
+      "category_id": "CAT018",
+      "category_name": "3D & Animation",
+      "category_icon": "🎭",
+      "tool_count": 10,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC003"
+      ]
+    },
+    {
+      "category_id": "CAT050",
+      "category_name": "Model Deployment",
+      "category_icon": "🚀",
+      "tool_count": 10,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC010"
+      ]
+    },
+    {
+      "category_id": "CAT055",
+      "category_name": "Legal AI",
+      "category_icon": "⚖️",
+      "tool_count": 9,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC013"
+      ]
+    },
+    {
+      "category_id": "CAT033",
+      "category_name": "Learning & Tutoring",
+      "category_icon": "📚",
+      "tool_count": 9,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC006"
+      ]
+    },
+    {
+      "category_id": "CAT021",
+      "category_name": "Web Design",
+      "category_icon": "🖥️",
+      "tool_count": 9,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC003"
+      ]
+    },
+    {
+      "category_id": "CAT038",
+      "category_name": "Business Intelligence",
+      "category_icon": "📊",
+      "tool_count": 9,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC007"
+      ]
+    },
+    {
+      "category_id": "CAT051",
+      "category_name": "Code Security",
+      "category_icon": "🛡️",
+      "tool_count": 9,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC011"
+      ]
+    },
+    {
+      "category_id": "CAT020",
+      "category_name": "Presentation Design",
+      "category_icon": "📊",
+      "tool_count": 9,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC003"
+      ]
+    },
+    {
+      "category_id": "CAT008",
+      "category_name": "Translation & Localization",
+      "category_icon": "🌐",
+      "tool_count": 7,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC001"
+      ]
+    },
+    {
+      "category_id": "CAT041",
+      "category_name": "Strategy & Planning",
+      "category_icon": "♟️",
+      "tool_count": 7,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC007"
+      ]
+    },
+    {
+      "category_id": "CAT040",
+      "category_name": "Market Research",
+      "category_icon": "🔍",
+      "tool_count": 6,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC007"
+      ]
+    },
+    {
+      "category_id": "CAT059",
+      "category_name": "E-commerce Automation",
+      "category_icon": "🛒",
+      "tool_count": 6,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC015"
+      ]
+    },
+    {
+      "category_id": "CAT047",
+      "category_name": "Web Scraping",
+      "category_icon": "🕷️",
+      "tool_count": 6,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC009"
+      ]
+    },
+    {
+      "category_id": "CAT012",
+      "category_name": "API & Integration",
+      "category_icon": "🔌",
+      "tool_count": 6,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC002"
+      ]
+    },
+    {
+      "category_id": "CAT014",
+      "category_name": "Database & Backend",
+      "category_icon": "🗄️",
+      "tool_count": 6,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC002"
+      ]
+    },
+    {
+      "category_id": "CAT045",
+      "category_name": "Data Visualization",
+      "category_icon": "📉",
+      "tool_count": 5,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC009"
+      ]
+    },
+    {
+      "category_id": "CAT028",
+      "category_name": "Meeting & Notes",
+      "category_icon": "📝",
+      "tool_count": 5,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC005"
+      ]
+    },
+    {
+      "category_id": "CAT052",
+      "category_name": "Cybersecurity",
+      "category_icon": "🔐",
+      "tool_count": 5,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC011"
+      ]
+    },
+    {
+      "category_id": "CAT031",
+      "category_name": "Document Management",
+      "category_icon": "📁",
+      "tool_count": 5,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC005"
+      ]
+    },
+    {
+      "category_id": "CAT035",
+      "category_name": "Academic Writing",
+      "category_icon": "📖",
+      "tool_count": 4,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC006"
+      ]
+    },
+    {
+      "category_id": "CAT058",
+      "category_name": "Character AI",
+      "category_icon": "🎭",
+      "tool_count": 4,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC014"
+      ]
+    },
+    {
+      "category_id": "CAT044",
+      "category_name": "Medical AI",
+      "category_icon": "🏥",
+      "tool_count": 3,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC008"
+      ]
+    },
+    {
+      "category_id": "CAT057",
+      "category_name": "Gaming AI",
+      "category_icon": "🎮",
+      "tool_count": 3,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC014"
+      ]
+    },
+    {
+      "category_id": "CAT032",
+      "category_name": "Communication",
+      "category_icon": "💬",
+      "tool_count": 3,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC005"
+      ]
+    },
+    {
+      "category_id": "CAT039",
+      "category_name": "Financial Analysis",
+      "category_icon": "💰",
+      "tool_count": 3,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC007"
+      ]
+    },
+    {
+      "category_id": "CAT025",
+      "category_name": "Lead Generation",
+      "category_icon": "🎯",
+      "tool_count": 2,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC004"
+      ]
+    },
+    {
+      "category_id": "CAT015",
+      "category_name": "Frontend Development",
+      "category_icon": "🌐",
+      "tool_count": 1,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC002"
+      ]
+    },
+    {
+      "category_id": "CAT046",
+      "category_name": "Business Analytics",
+      "category_icon": "📊",
+      "tool_count": 1,
+      "sector_count": 1,
+      "sector_ids": [
+        "SEC009"
+      ]
+    }
+  ]
+}
