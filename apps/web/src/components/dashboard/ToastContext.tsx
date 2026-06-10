@@ -117,16 +117,16 @@ const ToastItem = ({
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 40, scale: 0.94 }}
+      initial={{ opacity: 0, y: -20, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 20, scale: 0.96, transition: { duration: 0.18, ease: 'easeIn' } }}
-      transition={{ type: 'spring', damping: 26, stiffness: 300, delay: index * 0.04 }}
+      exit={{ opacity: 0, y: -12, scale: 0.96, transition: { duration: 0.15, ease: 'easeIn' } }}
+      transition={{ type: 'spring', damping: 28, stiffness: 320, delay: index * 0.03 }}
       className="pointer-events-auto w-full select-none overflow-hidden"
       style={{
-        borderRadius: 14,
-        background: '#0c141c', // Solid dark background to prevent transparency
+        borderRadius: 10,
+        background: '#0c141c',
         border: `1px solid ${cfg.topLine}28`,
-        boxShadow: `0 4px 24px rgba(0,0,0,0.5), 0 1px 0 ${cfg.topLine}18 inset`,
+        boxShadow: `0 4px 20px rgba(0,0,0,0.45), 0 1px 0 ${cfg.topLine}18 inset`,
       }}
       role="alert"
       aria-live="polite"
@@ -135,28 +135,24 @@ const ToastItem = ({
       <div style={{ height: 2, background: `linear-gradient(90deg, ${cfg.topLine}, ${cfg.topLine}44, transparent)` }} />
 
       {/* Body */}
-      <div className="flex items-center gap-3 px-4 py-3.5">
+      <div className="flex items-center gap-2.5 px-3 py-2.5">
         {/* Icon */}
         <div
-          className="shrink-0 flex items-center justify-center rounded-xl"
-          style={{
-            width: 36,
-            height: 36,
-            background: cfg.iconBg,
-          }}
+          className="shrink-0 flex items-center justify-center rounded-lg"
+          style={{ width: 30, height: 30, background: cfg.iconBg }}
         >
-          <Icon size={17} color={cfg.iconColor} strokeWidth={2.5} />
+          <Icon size={14} color={cfg.iconColor} strokeWidth={2.5} />
         </div>
 
         {/* Text */}
         <div className="flex-1 min-w-0">
           <p
-            className="text-[8.5px] font-black uppercase tracking-[0.22em] font-mono mb-0.5"
+            className="text-[7.5px] font-black uppercase tracking-[0.2em] font-mono mb-0.5"
             style={{ color: cfg.iconColor }}
           >
             {toast.title ?? cfg.label}
           </p>
-          <p className="text-[12.5px] font-semibold text-[var(--text)] leading-snug">
+          <p className="text-[11px] font-semibold text-[var(--text)] leading-snug">
             {toast.message}
           </p>
         </div>
@@ -164,13 +160,13 @@ const ToastItem = ({
         {/* Close */}
         <button
           onClick={() => onRemove(toast.id)}
-          className="shrink-0 flex items-center justify-center rounded-lg cursor-pointer transition-all duration-150"
-          style={{ width: 28, height: 28, background: 'transparent' }}
+          className="shrink-0 flex items-center justify-center rounded-md cursor-pointer transition-all duration-150"
+          style={{ width: 22, height: 22, background: 'transparent' }}
           onMouseEnter={e => (e.currentTarget.style.background = cfg.iconBg)}
           onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
           aria-label="Dismiss"
         >
-          <X size={13} color="var(--muted2)" strokeWidth={2.5} />
+          <X size={11} color="var(--muted2)" strokeWidth={2.5} />
         </button>
       </div>
 
@@ -205,10 +201,10 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
     <ToastContext.Provider value={{ showToast }}>
       {children}
 
-      {/* Toast column — bottom-right, newest on bottom */}
+      {/* Toast column — top-right, newest on top */}
       <div
-        className="fixed bottom-6 right-4 md:right-6 z-[9999] flex flex-col gap-2 items-end pointer-events-none"
-        style={{ width: 'min(400px, calc(100vw - 32px))' }}
+        className="fixed top-4 right-4 md:right-5 z-[9999] flex flex-col gap-1.5 items-end pointer-events-none"
+        style={{ width: 'min(320px, calc(100vw - 24px))' }}
         aria-label="Notifications"
       >
         <AnimatePresence mode="popLayout">
