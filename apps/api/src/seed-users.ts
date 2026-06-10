@@ -15,16 +15,16 @@ async function resetUsers() {
     console.log('=== DATABASE USER RESET PROTOCOL INITIATED ===');
     
     // 1. Purge all other users except the main Owner email
-    console.log('Purging all user accounts except Owner (hemanthmm1107@gmail.com)...');
+    console.log('Purging all user accounts except Owner (saikrishnanmk1603@gmail.com)...');
     const deleteRes = await pool.query(
-      "DELETE FROM users WHERE email != 'hemanthmm1107@gmail.com'"
+      "DELETE FROM users WHERE email != 'saikrishnanmk1603@gmail.com'"
     );
     console.log(`Successfully purged ${deleteRes.rowCount} accounts from the user directory.`);
 
     // 2. Upsert the Owner profile
     console.log('Ensuring Owner account is seeded...');
-    const email = 'hemanthmm1107@gmail.com';
-    const username = 'MM1107';
+    const email = 'saikrishnanmk1603@gmail.com';
+    const username = 'ManMadhan';
     const password = 'Welcome@123';
     const role = 'owner';
     
