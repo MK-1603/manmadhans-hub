@@ -157,9 +157,11 @@ export const AppSettings = ({ onTabChange, role }: { onTabChange: (tab: string) 
   const renderContent = (sectionId: string) => {
     // App settings sections
     if (sectionId === 'security') return (
-      <div className="p-5 md:p-8 space-y-8 relative overflow-hidden h-fit">
+      <div className="p-5 md:p-8 space-y-8 relative h-fit">
         {/* Ambient background glow */}
-        <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--emerald)]/[0.03] blur-[100px] pointer-events-none rounded-full" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px]">
+          <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--emerald)]/[0.03] blur-[100px] rounded-full" />
+        </div>
         
         <div className="flex items-center gap-4 border-b border-[var(--border)] pb-6 relative z-10">
           <div className="p-3.5 rounded-2xl bg-gradient-to-br from-[var(--emerald)]/20 to-[var(--emerald)]/5 border border-[var(--emerald)]/30 shrink-0 shadow-[0_0_20px_rgba(16,185,129,0.15)] relative group">
@@ -280,7 +282,7 @@ export const AppSettings = ({ onTabChange, role }: { onTabChange: (tab: string) 
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: -5, scale: 0.98 }}
                                 transition={{ duration: 0.15 }}
-                                className="absolute top-full left-0 right-0 mt-3 bg-[var(--card-bg)] border border-[var(--emerald)]/20 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden z-[999] flex flex-col p-2 backdrop-blur-3xl"
+                                className="absolute top-full left-0 right-0 mt-2 bg-[var(--card-bg)] border border-[var(--emerald)]/20 rounded-[1.25rem] shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden z-[999] flex flex-col p-1.5 backdrop-blur-3xl"
                               >
                                 {[
                                   { value: '1', label: '1 Minute', desc: 'Maximum security' },
@@ -295,11 +297,11 @@ export const AppSettings = ({ onTabChange, role }: { onTabChange: (tab: string) 
                                       setAppLockTimeout(option.value);
                                       setIsTimeoutDropdownOpen(false);
                                     }}
-                                    className={`px-5 py-3.5 rounded-xl text-left transition-all flex items-center justify-between group ${appLockTimeout === option.value ? 'bg-[var(--emerald)]/10 text-[var(--emerald)]' : 'hover:bg-[var(--bg)] text-[var(--text)]'}`}
+                                    className={`px-4 py-2.5 rounded-xl text-left transition-all flex items-center justify-between group ${appLockTimeout === option.value ? 'bg-[var(--emerald)]/10 text-[var(--emerald)]' : 'hover:bg-[var(--bg)] text-[var(--text)]'}`}
                                   >
-                                    <div className="flex flex-col gap-1">
-                                      <span className="text-[14px] font-bold tracking-wide">{option.label}</span>
-                                      <span className={`text-[10px] font-mono ${appLockTimeout === option.value ? 'text-[var(--emerald)]/70' : 'text-[var(--muted)]'}`}>{option.desc}</span>
+                                    <div className="flex flex-col gap-0.5">
+                                      <span className="text-[13px] font-bold tracking-wide">{option.label}</span>
+                                      <span className={`text-[9px] font-mono ${appLockTimeout === option.value ? 'text-[var(--emerald)]/70' : 'text-[var(--muted)]'}`}>{option.desc}</span>
                                     </div>
                                     {appLockTimeout === option.value && (
                                       <Check size={16} className="text-[var(--emerald)]" />

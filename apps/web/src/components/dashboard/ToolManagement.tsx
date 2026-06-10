@@ -387,12 +387,14 @@ export const ToolManagement = ({ initialCategory = 'all' }: { initialCategory?: 
             </div>
           ) : (
             <div className="w-full rounded-2xl border border-[var(--border)] overflow-hidden bg-[var(--card-bg)] shadow-sm">
-              <table className="w-full text-left border-collapse">
+              
+              {/* DESKTOP TABLE VIEW */}
+              <table className="hidden md:table w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-[var(--bg)] border-b border-[var(--border)] text-[9px] font-black uppercase tracking-widest text-[var(--muted2)]">
                     <th className="py-4 px-6 font-mono font-black">Node</th>
-                    <th className="py-4 px-6 font-mono font-black hidden sm:table-cell">Category</th>
-                    <th className="py-4 px-6 font-mono font-black hidden md:table-cell">Pricing</th>
+                    <th className="py-4 px-6 font-mono font-black">Category</th>
+                    <th className="py-4 px-6 font-mono font-black">Pricing</th>
                     <th className="py-4 px-6 font-mono font-black">Status</th>
                     <th className="py-4 px-6 text-right font-mono font-black">Operations</th>
                   </tr>
@@ -400,7 +402,7 @@ export const ToolManagement = ({ initialCategory = 'all' }: { initialCategory?: 
                 <tbody>
                   {tools.map((tool, index) => (
                     <motion.tr 
-                      key={tool.id}
+                      key={`desktop-${tool.id}`}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: Math.min(index * 0.03, 0.3) }}
@@ -423,14 +425,14 @@ export const ToolManagement = ({ initialCategory = 'all' }: { initialCategory?: 
                       </td>
                       
                       {/* Category */}
-                      <td className="py-4 px-6 hidden sm:table-cell">
+                      <td className="py-4 px-6">
                         <span className="inline-flex px-2 py-1 rounded-md bg-[var(--bg)] border border-[var(--border)] text-[9px] font-black text-[var(--text)] uppercase tracking-widest font-mono">
                           {tool.category_name || 'UNK'}
                         </span>
                       </td>
 
                       {/* Pricing */}
-                      <td className="py-4 px-6 hidden md:table-cell">
+                      <td className="py-4 px-6">
                         <span className="text-[10px] font-black text-emerald-400 uppercase tracking-widest font-mono">
                           {tool.pricing_model || 'Free'}
                         </span>
@@ -487,6 +489,67 @@ export const ToolManagement = ({ initialCategory = 'all' }: { initialCategory?: 
                   ))}
                 </tbody>
               </table>
+
+              {/* MOBILE CARD VIEW */}
+              <div className="md:hidden flex flex-col divide-y divide-[var(--border)]">
+                {tools.map((tool, index) => (
+                  <motion.div 
+                    key={`mobile-${tool.id}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: Math.min(index * 0.03, 0.3) }}
+                    className="p-4 bg-[var(--bg)] hover:bg-[var(--card-bg)] transition-colors flex flex-col gap-4"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-10 h-10 rounded-xl bg-[var(--card-bg)] border border-[var(--border)] flex items-center justify-center shrink-0">
+                          {tool.platform_type?.includes('Web') ? <Globe size={16} className="text-emerald-400" /> : <Cpu size={16} className="text-emerald-400" />}
+                        </div>
+                        <div className="flex flex-col min-w-0">
+                          <span className="text-[14px] font-black text-[var(--text)] truncate flex items-center gap-1.5">
+                            {tool.name}
+                            {tool.is_featured && <Star size={10} className="fill-amber-400 text-amber-400 shrink-0" />}
+                          </span>
+                          <span className="text-[10px] font-bold text-[var(--muted)] uppercase tracking-widest font-mono truncate">{tool.developer_name || 'System Hub'}</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-end shrink-0 gap-1.5">
+                        <div className="flex items-center gap-1.5">
+                          <span className={`w-1.5 h-1.5 rounded-full ${tool.is_archived ? 'bg-red-500' : 'bg-[var(--neon)] animate-pulse'}`} />
+                          <span className={`text-[9px] font-black uppercase tracking-widest ${tool.is_archived ? 'text-red-400' : 'text-[var(--neon)]'}`}>
+                            {tool.is_archived ? 'Offline' : 'Active'}
+                          </span>
+                        </div>
+                        <span className="inline-flex px-1.5 py-0.5 rounded bg-[var(--card-bg)] border border-[var(--border)] text-[8px] font-black text-[var(--text)] uppercase tracking-widest font-mono">
+                          {tool.category_name || 'UNK'}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <span className="text-[10px] font-black text-emerald-400 uppercase tracking-widest font-mono">
+                        {tool.pricing_model || 'Free'}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        {(tool.website_url || tool.url) && (
+                          <a href={tool.website_url || tool.url} target="_blank" rel="noopener noreferrer" className="h-8 px-2.5 rounded-lg bg-[var(--card-bg)] border border-[var(--border)] hover:border-emerald-500/30 hover:text-emerald-400 text-[var(--muted)] flex items-center justify-center transition-all">
+                            <ExternalLink size={12} />
+                          </a>
+                        )}
+                        <button onClick={() => { setEditingTool(tool); setIsSidePanelOpen(true); }} className="h-8 px-2.5 rounded-lg bg-[var(--card-bg)] border border-[var(--border)] hover:border-blue-500/30 hover:text-blue-400 text-[var(--muted)] flex items-center justify-center transition-all">
+                          <Edit3 size={12} />
+                        </button>
+                        <button onClick={() => handleArchive(tool.id, !tool.is_archived)} className="h-8 px-2.5 rounded-lg bg-[var(--card-bg)] border border-[var(--border)] hover:border-amber-500/30 hover:text-amber-400 text-[var(--muted)] flex items-center justify-center transition-all">
+                          {tool.is_archived ? <RotateCcw size={12} /> : <Archive size={12} />}
+                        </button>
+                        <button onClick={() => handleDelete(tool.id)} className="h-8 px-2.5 rounded-lg bg-[var(--card-bg)] border border-[var(--border)] hover:border-red-500/30 hover:text-red-400 text-[var(--muted)] flex items-center justify-center transition-all">
+                          <Trash2 size={12} />
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           )}
         </div>
