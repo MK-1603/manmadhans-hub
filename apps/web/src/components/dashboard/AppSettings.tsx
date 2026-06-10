@@ -155,164 +155,149 @@ export const AppSettings = ({ onTabChange, role }: { onTabChange: (tab: string) 
 
   // Render the content panel for a given section id
   const renderContent = (sectionId: string) => {
-    // App settings sections
     if (sectionId === 'security') return (
-      <div className="p-5 md:p-8 space-y-8 relative h-fit">
-        {/* Ambient background glow */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px]">
-          <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--emerald)]/[0.03] blur-[100px] rounded-full" />
+      <div className="p-4 md:p-5 space-y-4 relative h-fit">
+        {/* Subtle ambient glow */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl">
+          <div className="absolute -top-16 -right-16 w-56 h-56 bg-[var(--emerald)]/[0.04] blur-[70px] rounded-full" />
         </div>
-        
-        <div className="flex items-center gap-4 border-b border-[var(--border)] pb-6 relative z-10">
-          <div className="p-3.5 rounded-2xl bg-gradient-to-br from-[var(--emerald)]/20 to-[var(--emerald)]/5 border border-[var(--emerald)]/30 shrink-0 shadow-[0_0_20px_rgba(16,185,129,0.15)] relative group">
-            <div className="absolute inset-0 bg-[var(--emerald)]/20 blur-md rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            <ShieldCheck className="w-7 h-7 text-[var(--emerald)] relative z-10" />
+
+        {/* Compact Header */}
+        <div className="flex items-center gap-3 border-b border-[var(--border)] pb-3 relative z-10">
+          <div className="p-2 rounded-xl bg-[var(--emerald)]/10 border border-[var(--emerald)]/20 shrink-0">
+            <ShieldCheck className="w-5 h-5 text-[var(--emerald)]" />
           </div>
           <div>
-            <h3 className="text-lg md:text-xl font-black text-[var(--text)] uppercase tracking-[0.1em] drop-shadow-sm">Security & Privacy</h3>
-            <p className="text-[11px] text-[var(--muted)] mt-1 font-mono tracking-wide">Manage App Lock and cryptographic authentication</p>
+            <h3 className="text-[13px] font-black text-[var(--text)] uppercase tracking-[0.08em]">Security & Privacy</h3>
+            <p className="text-[10px] text-[var(--muted)] font-mono">App Lock & cryptographic authentication</p>
           </div>
         </div>
 
-        <div className="space-y-6 relative z-10">
-          <motion.div 
-            whileHover={{ scale: 1.005 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className={`relative overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between p-6 rounded-[24px] border transition-all duration-300 gap-5 ${
-              appLockEnabled 
-                ? 'bg-[var(--card-bg)] border-[var(--emerald)]/40 shadow-[0_0_30px_rgba(16,185,129,0.06)]' 
-                : 'bg-[var(--bg)] border-[var(--border)] hover:border-[var(--emerald)]/20'
-            }`}
-          >
-            {/* Ambient gradient when enabled */}
-            <div className={`absolute inset-0 bg-gradient-to-r from-[var(--emerald)]/[0.04] to-transparent transition-opacity duration-500 pointer-events-none ${appLockEnabled ? 'opacity-100' : 'opacity-0'}`} />
-            
-            <div className="relative z-10 flex-1">
-              <div className="flex items-center gap-3">
-                <p className="text-[15px] font-black text-[var(--text)] tracking-wide">Enable App Lock</p>
-                {appLockEnabled && (
-                  <span className="px-2.5 py-1 rounded-md text-[9px] font-black uppercase tracking-[0.15em] bg-[var(--emerald)]/10 text-[var(--emerald)] border border-[var(--emerald)]/20 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-                    Active
-                  </span>
-                )}
+        <div className="space-y-3 relative z-10">
+          {/* App Lock Toggle Row */}
+          <div className={`flex items-center justify-between px-4 py-3 rounded-xl border transition-all duration-200 ${
+            appLockEnabled
+              ? 'bg-[var(--emerald)]/5 border-[var(--emerald)]/30'
+              : 'bg-[var(--bg)] border-[var(--border)] hover:border-[var(--border2)]'
+          }`}>
+            <div className="flex items-center gap-3 min-w-0">
+              <Lock className={`w-4 h-4 shrink-0 ${appLockEnabled ? 'text-[var(--emerald)]' : 'text-[var(--muted2)]'}`} />
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <p className="text-[12px] font-bold text-[var(--text)]">Enable App Lock</p>
+                  {appLockEnabled && (
+                    <span className="px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest bg-[var(--emerald)]/10 text-[var(--emerald)] border border-[var(--emerald)]/20">
+                      Active
+                    </span>
+                  )}
+                </div>
+                <p className="text-[10px] text-[var(--muted)] mt-0.5">Require a PIN to unlock when idle</p>
               </div>
-              <p className="text-[12px] text-[var(--muted)] mt-1.5 leading-relaxed max-w-md">Require a cryptographic PIN to unlock the dashboard when idle or away.</p>
             </div>
-            
-            <button 
+            <button
               onClick={() => {
                 setAppLockEnabled(!appLockEnabled);
-                if (!appLockEnabled && !appLockPin) {
-                  showToast('Please set a PIN below', 'info');
-                }
+                if (!appLockEnabled && !appLockPin) showToast('Please set a PIN below', 'info');
               }}
-              className={`relative z-10 w-14 h-7 rounded-full flex items-center transition-all p-1 cursor-pointer shrink-0 ${appLockEnabled ? 'bg-[var(--emerald)]/20 border border-[var(--emerald)]/40 justify-end' : 'bg-black/60 border border-[var(--border)] justify-start'}`}
+              className={`relative w-10 h-5 rounded-full flex items-center transition-all p-0.5 cursor-pointer shrink-0 ml-3 ${
+                appLockEnabled ? 'bg-[var(--emerald)]/20 border border-[var(--emerald)]/40 justify-end' : 'bg-black/60 border border-[var(--border)] justify-start'
+              }`}
             >
-              <motion.div 
+              <motion.div
                 layout
-                className={`w-5 h-5 rounded-full shadow-md transition-colors ${appLockEnabled ? 'bg-[var(--emerald)] shadow-[0_0_12px_rgba(16,185,129,0.6)]' : 'bg-[var(--muted2)]'}`} 
+                className={`w-3.5 h-3.5 rounded-full shadow-sm transition-colors ${appLockEnabled ? 'bg-[var(--emerald)] shadow-[0_0_6px_rgba(16,185,129,0.5)]' : 'bg-[var(--muted2)]'}`}
               />
             </button>
-          </motion.div>
+          </div>
 
+          {/* PIN + Timeout Panel */}
           <AnimatePresence>
             {appLockEnabled && (
-              <motion.div 
-                initial={{ opacity: 0, height: 0, y: -10 }} 
-                animate={{ opacity: 1, height: 'auto', y: 0 }} 
-                exit={{ opacity: 0, height: 0, y: -10 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className={isTimeoutDropdownOpen ? "overflow-visible" : "overflow-hidden"}
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className={isTimeoutDropdownOpen ? 'overflow-visible' : 'overflow-hidden'}
               >
-                <div className="p-6 md:p-8 rounded-[24px] bg-[var(--card-bg)] border border-[var(--border)] space-y-8 relative shadow-lg mt-2">
-                  {/* Decorative background overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--emerald)]/[0.02] to-transparent pointer-events-none rounded-[24px]" />
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--emerald)]/40 to-transparent opacity-50 rounded-t-[24px]" />
-                  
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black text-[var(--emerald)] uppercase tracking-[0.2em] flex items-center gap-2">
-                        <Lock size={14} className="text-[var(--emerald)]" /> Unlock PIN
-                      </label>
-                      <div className="relative group">
-                        <input 
-                          type={showPinMask ? "password" : "text"}
-                          maxLength={4}
-                          placeholder="••••"
-                          value={appLockPin}
-                          onChange={(e) => setAppLockPin(e.target.value.replace(/\D/g, ''))}
-                          className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-2xl pl-6 pr-14 py-4 text-center text-3xl font-black text-[var(--text)] focus:border-[var(--emerald)] focus:ring-2 focus:ring-[var(--emerald)]/20 outline-none transition-all tracking-[0.5em] group-hover:border-[var(--border2)] shadow-inner"
-                        />
-                        <button 
-                          onClick={() => setShowPinMask(!showPinMask)}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--muted2)] hover:text-[var(--text)] bg-[var(--card-bg)] p-2.5 rounded-xl border border-transparent hover:border-[var(--border)] transition-all cursor-pointer shadow-sm"
-                        >
-                          {showPinMask ? <Eye size={18} /> : <EyeOff size={18} />}
-                        </button>
-                      </div>
-                      <p className="text-[10px] text-[var(--muted)] tracking-widest text-center mt-3 font-mono opacity-80">4-DIGIT NUMERIC CODE</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 rounded-xl bg-[var(--card-bg)] border border-[var(--border)]">
+                  {/* PIN Input */}
+                  <div className="space-y-1.5">
+                    <label className="text-[9px] font-black text-[var(--emerald)] uppercase tracking-widest flex items-center gap-1 font-mono">
+                      <Lock size={10} /> Unlock PIN
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPinMask ? 'password' : 'text'}
+                        maxLength={4}
+                        placeholder="••••"
+                        value={appLockPin}
+                        onChange={(e) => setAppLockPin(e.target.value.replace(/\D/g, ''))}
+                        className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-lg pl-3 pr-9 py-2.5 text-center text-xl font-black text-[var(--text)] focus:border-[var(--emerald)] focus:ring-1 focus:ring-[var(--emerald)]/20 outline-none transition-all tracking-[0.4em] hover:border-[var(--border2)]"
+                      />
+                      <button
+                        onClick={() => setShowPinMask(!showPinMask)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-[var(--muted2)] hover:text-[var(--text)] p-1 rounded transition-all cursor-pointer"
+                      >
+                        {showPinMask ? <Eye size={13} /> : <EyeOff size={13} />}
+                      </button>
                     </div>
+                    <p className="text-[8px] text-[var(--muted)] tracking-widest text-center font-mono opacity-60">4-DIGIT CODE</p>
+                  </div>
 
-                    <div className="space-y-3 relative">
-                      <label className="text-[10px] font-black text-[var(--emerald)] uppercase tracking-[0.2em] flex items-center gap-2">
-                        <Clock size={14} className="text-[var(--emerald)]" /> Auto-Lock Timeout
-                      </label>
-                      <div className="relative">
-                        <button
-                          onClick={() => setIsTimeoutDropdownOpen(!isTimeoutDropdownOpen)}
-                          className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-2xl px-6 py-4 text-left focus:border-[var(--emerald)] focus:ring-2 focus:ring-[var(--emerald)]/20 outline-none transition-all cursor-pointer flex items-center justify-between group hover:border-[var(--border2)] shadow-inner"
-                        >
-                          <div className="flex flex-col">
-                            <span className="text-[16px] font-bold tracking-wide text-[var(--text)] group-hover:text-[var(--emerald)] transition-colors">
-                              {appLockTimeout === '1' ? '1 Minute' : appLockTimeout === '60' ? '1 Hour' : `${appLockTimeout} Minutes`}
-                            </span>
-                            <span className="text-[10px] text-[var(--muted)] font-mono mt-1 opacity-80">IDLE DURATION</span>
-                          </div>
-                          <div className={`p-2.5 rounded-xl bg-[var(--card-bg)] border transition-all duration-300 ${isTimeoutDropdownOpen ? 'rotate-180 text-[var(--emerald)] border-[var(--emerald)]/30 shadow-[0_0_15px_rgba(16,185,129,0.15)]' : 'text-[var(--muted2)] border-[var(--border)]'}`}>
-                            <ChevronDown size={16} />
-                          </div>
-                        </button>
+                  {/* Timeout Dropdown */}
+                  <div className="space-y-1.5 relative">
+                    <label className="text-[9px] font-black text-[var(--emerald)] uppercase tracking-widest flex items-center gap-1 font-mono">
+                      <Clock size={10} /> Auto-Lock Timeout
+                    </label>
+                    <div className="relative">
+                      <button
+                        onClick={() => setIsTimeoutDropdownOpen(!isTimeoutDropdownOpen)}
+                        className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-lg px-3 py-2.5 text-left transition-all cursor-pointer flex items-center justify-between hover:border-[var(--border2)] outline-none"
+                      >
+                        <div>
+                          <span className="text-[12px] font-bold text-[var(--text)]">
+                            {appLockTimeout === '1' ? '1 Minute' : appLockTimeout === '60' ? '1 Hour' : `${appLockTimeout} Minutes`}
+                          </span>
+                          <span className="block text-[8px] text-[var(--muted)] font-mono opacity-60">IDLE DURATION</span>
+                        </div>
+                        <ChevronDown size={13} className={`text-[var(--muted2)] transition-transform duration-200 ${isTimeoutDropdownOpen ? 'rotate-180 text-[var(--emerald)]' : ''}`} />
+                      </button>
 
-                        <AnimatePresence>
-                          {isTimeoutDropdownOpen && (
-                            <>
-                              <div className="fixed inset-0 z-40" onClick={() => setIsTimeoutDropdownOpen(false)} />
-                              <motion.div
-                                initial={{ opacity: 0, y: -5, scale: 0.98 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: -5, scale: 0.98 }}
-                                transition={{ duration: 0.15 }}
-                                className="absolute top-full left-0 right-0 mt-2 bg-[var(--card-bg)] border border-[var(--emerald)]/20 rounded-[1.25rem] shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-y-auto max-h-[160px] z-[999] flex flex-col p-1.5 backdrop-blur-3xl no-scrollbar"
-                              >
-                                {[
-                                  { value: '1', label: '1 Minute', desc: 'Maximum security' },
-                                  { value: '5', label: '5 Minutes', desc: 'Balanced setting' },
-                                  { value: '15', label: '15 Minutes', desc: 'Extended session' },
-                                  { value: '30', label: '30 Minutes', desc: 'Long duration' },
-                                  { value: '60', label: '1 Hour', desc: 'Minimum security' }
-                                ].map(option => (
-                                  <button
-                                    key={option.value}
-                                    onClick={() => {
-                                      setAppLockTimeout(option.value);
-                                      setIsTimeoutDropdownOpen(false);
-                                    }}
-                                    className={`px-3 py-2 rounded-xl text-left transition-all flex items-center justify-between group shrink-0 ${appLockTimeout === option.value ? 'bg-[var(--emerald)]/10 text-[var(--emerald)]' : 'hover:bg-[var(--bg)] text-[var(--text)]'}`}
-                                  >
-                                    <div className="flex flex-col">
-                                      <span className="text-[12px] font-bold tracking-wide">{option.label}</span>
-                                      <span className={`text-[9px] font-mono ${appLockTimeout === option.value ? 'text-[var(--emerald)]/70' : 'text-[var(--muted)]'}`}>{option.desc}</span>
-                                    </div>
-                                    {appLockTimeout === option.value && (
-                                      <Check size={16} className="text-[var(--emerald)]" />
-                                    )}
-                                  </button>
-                                ))}
-                              </motion.div>
-                            </>
-                          )}
-                        </AnimatePresence>
-                      </div>
+                      <AnimatePresence>
+                        {isTimeoutDropdownOpen && (
+                          <>
+                            <div className="fixed inset-0 z-40" onClick={() => setIsTimeoutDropdownOpen(false)} />
+                            <motion.div
+                              initial={{ opacity: 0, y: -3, scale: 0.98 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: -3, scale: 0.98 }}
+                              transition={{ duration: 0.1 }}
+                              className="absolute top-full left-0 right-0 mt-1 bg-[var(--card-bg)] border border-[var(--emerald)]/20 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.6)] overflow-y-auto max-h-[140px] z-[999] flex flex-col p-1 backdrop-blur-2xl no-scrollbar"
+                            >
+                              {[
+                                { value: '1', label: '1 Minute', desc: 'Max security' },
+                                { value: '5', label: '5 Minutes', desc: 'Balanced' },
+                                { value: '15', label: '15 Minutes', desc: 'Extended' },
+                                { value: '30', label: '30 Minutes', desc: 'Long' },
+                                { value: '60', label: '1 Hour', desc: 'Min security' },
+                              ].map(opt => (
+                                <button
+                                  key={opt.value}
+                                  onClick={() => { setAppLockTimeout(opt.value); setIsTimeoutDropdownOpen(false); }}
+                                  className={`px-3 py-1.5 rounded-lg text-left transition-all flex items-center justify-between shrink-0 ${appLockTimeout === opt.value ? 'bg-[var(--emerald)]/10 text-[var(--emerald)]' : 'hover:bg-[var(--bg)] text-[var(--text)]'}`}
+                                >
+                                  <div>
+                                    <span className="text-[11px] font-bold block">{opt.label}</span>
+                                    <span className={`text-[8px] font-mono ${appLockTimeout === opt.value ? 'text-[var(--emerald)]/60' : 'text-[var(--muted)]'}`}>{opt.desc}</span>
+                                  </div>
+                                  {appLockTimeout === opt.value && <Check size={12} className="text-[var(--emerald)]" />}
+                                </button>
+                              ))}
+                            </motion.div>
+                          </>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </div>
                 </div>
