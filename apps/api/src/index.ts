@@ -1,3 +1,8 @@
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, '../.env'), override: true });
 import { createServer } from 'http';
 import os from 'os';
 import cluster from 'cluster';
@@ -372,3 +377,4 @@ if (cluster.isPrimary) {
 }
 
 export default app;
+// Trigger restart

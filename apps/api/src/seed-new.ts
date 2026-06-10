@@ -62,7 +62,7 @@ async function seedData() {
     console.log(`Seeded ${ownersToSeed.length} owners.`);
 
     // 2. Load Tools
-    const toolsPath = path.resolve(String.raw`d:\Organization\ManMadhan\Manmadhan'S Project\Manmadhan'S Project\Manmahan's-hub\AI_Tools_Schema_Fixed.json`);
+    const toolsPath = path.resolve("d:\\manmadhans-hub\\AI_Tools_Schema_Fixed.json");
     console.log(`Loading tools from ${toolsPath}...`);
     
     const toolsData = JSON.parse(fs.readFileSync(toolsPath, 'utf8'));

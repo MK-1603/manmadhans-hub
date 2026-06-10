@@ -52,7 +52,7 @@ export const ManmadhanMovie = () => {
             </div>
 
             <h1 className="font-royal text-3xl sm:text-4xl md:text-5xl font-bold text-white italic leading-tight tracking-tight">
-              Manmadhan
+              ManMadhan
             </h1>
             <p className="text-red-300/70 text-sm font-medium mt-1 tracking-wide">Tamil Romantic Thriller · 2004 · Silambarasan</p>
           </div>
@@ -91,7 +91,7 @@ export const ManmadhanMovie = () => {
 
             <iframe
               src="https://www.youtube.com/embed/w6Hxb4RXOjA?autoplay=0&rel=0&modestbranding=1"
-              title="Manmadhan Movie (2004)"
+              title="ManMadhan Movie (2004)"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="absolute top-0 left-0 w-full h-full border-none"
@@ -102,7 +102,7 @@ export const ManmadhanMovie = () => {
           <div className="bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-6 shadow-[var(--shadow-card)]">
             <h3 className="font-royal text-xl font-bold text-[var(--text)] italic mb-3">About the Film</h3>
             <p className="text-[var(--muted)] text-sm leading-relaxed">
-              <span className="font-semibold text-[var(--text)]">Manmadhan</span> is a 2004 Indian Tamil-language romantic thriller film directed by <span className="text-[var(--neon)] font-semibold">A.J. Murugan</span>. The film features Silambarasan in a celebrated dual role — one a charming lover, the other a mysterious serial killer. The film boasts a chart-topping soundtrack composed by <span className="text-[var(--neon)] font-semibold">Yuvan Shankar Raja</span>, making it one of Tamil cinema's most iconic albums. Critically acclaimed for its tight screenplay and stellar performances, the film became a landmark in Tamil romantic thriller cinema.
+              <span className="font-semibold text-[var(--text)]">ManMadhan</span> is a 2004 Indian Tamil-language romantic thriller film directed by <span className="text-[var(--neon)] font-semibold">A.J. Murugan</span>. The film features Silambarasan in a celebrated dual role — one a charming lover, the other a mysterious serial killer. The film boasts a chart-topping soundtrack composed by <span className="text-[var(--neon)] font-semibold">Yuvan Shankar Raja</span>, making it one of Tamil cinema's most iconic albums. Critically acclaimed for its tight screenplay and stellar performances, the film became a landmark in Tamil romantic thriller cinema.
             </p>
 
             <button

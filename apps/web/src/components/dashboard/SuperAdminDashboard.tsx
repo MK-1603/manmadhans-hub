@@ -530,8 +530,8 @@ function DashboardContent() {
     { id: 'notifications', label: 'Notification Center', icon: Bell, section: 'Features & Notes', roles: ['owner', 'member'] },
 
     // Hub Entertainment
-    { id: 'manmadhan-movie', label: 'Manmadhan Movie', icon: Film, section: 'Hub Entertainment', roles: ['owner', 'member'] },
-    { id: 'games', label: 'Hub Games', icon: Gamepad2, section: 'Hub Entertainment', roles: ['owner', 'member'] },
+    { id: 'manmadhan-movie', label: 'ManMadhan Movie', icon: Film, section: 'Hub Entertainment', roles: ['owner', 'member'] },
+    { id: 'games', label: 'ManMadhan Games', icon: Gamepad2, section: 'Hub Entertainment', roles: ['owner', 'member'] },
 
     // System Governance
     { id: 'ai-tools', label: 'AI Tools Manager', icon: Wrench, section: 'System Governance', roles: ['owner'] },

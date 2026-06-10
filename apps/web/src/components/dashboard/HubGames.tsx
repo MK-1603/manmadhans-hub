@@ -62,7 +62,7 @@ export function HubGames() {
                 </div>
                 <div>
                   <h1 className="font-royal text-2xl sm:text-3xl font-black text-[var(--text)] leading-none italic">
-                    Manmadhan Games
+                    ManMadhan Games
                   </h1>
                   <p className="text-[10px] text-[var(--neon)] mt-1 uppercase tracking-widest font-black">
                     Fully Offline Subgrid Arcade Protocol

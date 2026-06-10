@@ -321,12 +321,19 @@ export const ToolDetails = ({ toolId, onBack, onSelectTool }: ToolDetailsProps) 
               <Globe className={`w-12 h-12 text-slate-300 ${domain ? 'hidden' : ''}`} />
             </div>
 
-            <h1 className="text-2xl font-black text-[var(--text)] tracking-tight mb-2 text-center z-10">{tool.name}</h1>
-            <p className="text-[11px] font-bold text-[var(--muted2)] uppercase tracking-widest font-mono mb-6 text-center z-10">
-              {tool.category_name || 'AI Tool'}
-              {tool.sub_category && <><span className="mx-2 opacity-50">•</span>{tool.sub_category}</>}
-              {tool.micro_category && <><span className="mx-2 opacity-50">•</span>{tool.micro_category}</>}
-            </p>
+            <div className="flex flex-col items-center gap-1.5 text-center mb-6 z-10 w-full px-2">
+              <h1 className="text-2xl font-black text-[var(--text)] tracking-tight leading-none">{tool.name}</h1>
+              <p className="text-[11px] font-bold text-[var(--neon)] uppercase tracking-widest font-mono mt-2">
+                {tool.category_name || 'AI Tool'}
+              </p>
+              {(tool.sub_category || tool.micro_category) && (
+                <p className="text-[9px] font-medium text-[var(--muted)] uppercase tracking-widest font-mono">
+                  {tool.sub_category && <span>{tool.sub_category}</span>}
+                  {tool.sub_category && tool.micro_category && <span className="mx-2 opacity-40">•</span>}
+                  {tool.micro_category && <span>{tool.micro_category}</span>}
+                </p>
+              )}
+            </div>
 
             <div className="flex flex-wrap items-center justify-center gap-3 w-full z-10">
               <span className={`px-4 py-1.5 rounded-full border text-[10px] font-black uppercase tracking-widest font-mono shadow-sm ${pricingColor}`}>
@@ -416,24 +423,28 @@ export const ToolDetails = ({ toolId, onBack, onSelectTool }: ToolDetailsProps) 
             </div>
           </div>
 
-          {/* Quick Stats */}
+          {/* Quick Stats Grid */}
           <div className="bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-6 shadow-sm space-y-4">
-            <h3 className="text-[10px] font-black text-[var(--muted2)] uppercase tracking-[0.2em] font-mono border-b border-[var(--border)] pb-3">Tool Details</h3>
+            <h3 className="text-[10px] font-black text-[var(--muted2)] uppercase tracking-[0.2em] font-mono border-b border-[var(--border)] pb-3">Tool Intelligence</h3>
 
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center justify-between">
-                <span className="text-[12px] font-medium text-[var(--muted)] flex items-center gap-2"><Globe size={13} /> Website</span>
-                <span className="text-[12px] font-bold text-[var(--text)]">{domain || 'N/A'}</span>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-[var(--input-bg)] rounded-2xl p-3 flex flex-col gap-1 border border-[var(--border)] hover:border-[var(--border2)] transition-colors">
+                <span className="text-[9px] font-black uppercase text-[var(--muted2)] flex items-center gap-1.5"><Globe size={10} className="text-blue-400" /> Website</span>
+                <span className="text-xs font-bold text-[var(--text)] truncate">{domain || 'N/A'}</span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[12px] font-medium text-[var(--muted)] flex items-center gap-2"><User size={13} /> Developer</span>
-                <span className="text-[12px] font-bold text-[var(--text)]">{tool.developer_name || 'N/A'}</span>
+              <div className="bg-[var(--input-bg)] rounded-2xl p-3 flex flex-col gap-1 border border-[var(--border)] hover:border-[var(--border2)] transition-colors">
+                <span className="text-[9px] font-black uppercase text-[var(--muted2)] flex items-center gap-1.5"><User size={10} className="text-emerald-400" /> Developer</span>
+                <span className="text-xs font-bold text-[var(--text)] truncate" title={tool.developer_name || 'Unknown'}>{tool.developer_name || 'Unknown'}</span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[12px] font-medium text-[var(--muted)] flex items-center gap-2"><Monitor size={13} /> Platform</span>
-                <span className="text-[12px] font-bold text-[var(--text)] truncate max-w-[120px] text-right" title={tool.platform_type || (Array.isArray(tool.platform_support) ? tool.platform_support.join(', ') : 'Web')}>
+              <div className="col-span-2 bg-[var(--input-bg)] rounded-2xl p-3 flex flex-col gap-1 border border-[var(--border)] hover:border-[var(--border2)] transition-colors">
+                <span className="text-[9px] font-black uppercase text-[var(--muted2)] flex items-center gap-1.5"><Monitor size={10} className="text-amber-400" /> Platform</span>
+                <span className="text-xs font-bold text-[var(--text)] truncate" title={tool.platform_type || (Array.isArray(tool.platform_support) ? tool.platform_support.join(', ') : 'Web')}>
                   {tool.platform_type || (Array.isArray(tool.platform_support) ? tool.platform_support.join(', ') : 'Web')}
                 </span>
+              </div>
+              <div className="col-span-2 bg-[var(--input-bg)] rounded-2xl p-3 flex flex-col gap-1 border border-[var(--border)] hover:border-[var(--border2)] transition-colors">
+                <span className="text-[9px] font-black uppercase text-[var(--muted2)] flex items-center gap-1.5"><Workflow size={10} className="text-purple-400" /> Model / Tech</span>
+                <span className="text-xs font-bold text-[var(--text)] truncate" title={tool.model_version || tool.ai_model_used || 'Proprietary'}>{tool.model_version || tool.ai_model_used || 'Proprietary'}</span>
               </div>
             </div>
           </div>

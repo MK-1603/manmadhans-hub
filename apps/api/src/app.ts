@@ -1,3 +1,8 @@
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, '../.env'), override: true });
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -13,11 +18,22 @@ const app: Application = express();
 app.set('trust proxy', 1);
 // --- CORS Configuration ---
 const originEnv = process.env.CORS_ORIGIN || '*';
-const allowedOrigins = originEnv === '*'
+let allowedOrigins: string | string[] = originEnv === '*'
   ? '*'
   : (originEnv.includes(',')
       ? originEnv.split(',').flatMap(o => [o.trim(), o.trim().replace(/\/$/, '')])
       : [originEnv.trim(), originEnv.trim().replace(/\/$/, '')]);
+
+if (Array.isArray(allowedOrigins)) {
+  if (!allowedOrigins.includes('http://localhost:3000')) {
+    allowedOrigins.push('http://localhost:3000');
+  }
+} else if (allowedOrigins !== '*') {
+  allowedOrigins = [allowedOrigins, 'http://localhost:3000'];
+} else {
+  // If it's '*' or undefined, just explicitly use an array for development
+  allowedOrigins = ['http://localhost:3000', 'https://manmadhans-hub-web.vercel.app'];
+}
 
 const corsOptions = {
   origin: allowedOrigins,

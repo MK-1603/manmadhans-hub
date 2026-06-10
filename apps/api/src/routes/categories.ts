@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     }
 
     const result = await query(`
-      SELECT c.*, 
+      SELECT DISTINCT ON (c.name) c.*, 
       (SELECT CAST(COUNT(*) AS INT) FROM ai_tools t WHERE t.category_id = c.id OR t.category_name = c.name) as "toolsCount"
       FROM categories c
       ORDER BY c.name ASC

@@ -21,7 +21,7 @@ async function run() {
     console.log('Columns ensured.');
 
     // 2. Read the fixed JSON
-    const jsonPath = "d:\\Organization\\ManMadhan\\Manmadhan'S Project\\Manmadhan'S Project\\Manmahan's-hub\\AI_Tools_Schema_Fixed.json";
+    const jsonPath = "d:\\manmadhans-hub\\AI_Tools_Schema_Fixed.json";
     console.log(`Reading from ${jsonPath}...`);
     const toolsData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
     console.log(`Loaded ${toolsData.length} tools.`);
